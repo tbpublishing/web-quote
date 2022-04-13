@@ -1,0 +1,95 @@
+Below are the fields that are imported into the Presstimator from a webform.
+
+** Contact Information **			
+QuoteName
+Contact
+Company
+Address1
+Address2
+City
+State
+Zip
+Phone
+Email
+SalesmanName
+            
+
+** Job Information **
+IssueDate
+JobAccepted
+JobRequiredDate
+JobCopyInDate
+JobPrintedDate
+JobCompletedDate
+				
+QuoteNotes
+
+
+** Plant/Location **
+Plant
+Location
+
+** General Specs **
+JobFormat
+JobCopies
+JobTotalPages
+Sections
+ProductWidth
+ProductHeight
+Frequency
+
+** Paper Specs **
+PaperType
+PaperBW
+PaperColor
+PaperWrapType
+PaperWrapBW
+PaperWrapColor
+PaperWrapPages
+PaperNotes
+
+WebWidth
+
+** Folding Specs **
+FoldingType
+FoldingNotes
+
+** Composition Specs **
+Composition
+CompositionNotes
+
+** Proofing Specs **
+ProofingType
+ProofingNotes
+
+** Ink Specs **
+BlackInk
+SpotColor
+ProcessColor
+InkNotes
+
+** Bindery Specs **
+BinderyType
+BinderyCovers
+BinderyInserts
+BinderyBleeds
+BinderyNotes
+
+** Finishing Specs **
+FinishingType
+FinishingNotes
+
+** Mailing Specs **
+MailingRequired
+MailingNotes
+
+** Packaging Specs **
+Skids
+Bundles
+Cartons
+PackagingNotes
+
+** Delivery **
+DeliveryRequired
+DeliveryPickup
+DeliveryNotes
