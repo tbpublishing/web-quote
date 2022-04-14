@@ -4,7 +4,7 @@
 	<title>TBP Bid Request (INTERNAL)</title>
 </head>
 <body>
-<form name="bid" autocomplete="off">
+<form name="bid" autocomplete="off" onsubmit="emailSend()">
   
   <label for="salesrep">Sales Rep:</label>
   <select name="salesrep" id="salesrep">
@@ -19,15 +19,19 @@
       <option value="bruce">Bruce</option>
     </optgroup>
   </select>
-  
+  <input type="submit" />
   </form>
   
   <br>
   
-  <a href="javascript:(function()%7BemailSend()%3B%7D)()%3B">Submit</a>
+  <a href="javascript:emailSend()">Submit</a> 
  <!--a href="javascript:void(0)" onclick="emailSend()">Submit</a-->
  
+ <button class="send" onClick="emailSend()">Send</button>
+
+ 
  <script type="text/javascript"> 
+ 
   function emailSend() {
     var subject = "In-Processing Data Sheet";
     var body = "DS,\r\n\r\nAttached is my personal datasheet.\r\n\r\nVery respectfully,\r\n" + document.getElementById("salesrep").value + " " + document.getElementById("smNameLast").value;
@@ -37,8 +41,12 @@
     uri += encodeURIComponent(body);
     //window.location.assign(uri); //opens in the same page
     window.open(uri); //don't work on mobile
+    alert(`Done!`);
 }
-  </script>
+
+
+
+</script>
   
 </body>
 </html>
