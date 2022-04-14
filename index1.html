@@ -1,0 +1,446 @@
+<html>
+<head>
+<title>TBP Bid Request Form (INTERNAL)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<script type="text/javascript">
+   
+  function WrapClick(form)
+  {
+  	if(form.chkPaperWrapIncluded.checked)
+	{
+		form.PaperWrapType.selectedIndex = 1
+		form.PaperWrapBW.selectedIndex = 1
+		form.PaperWrapColor.selectedIndex = 1
+		form.PaperWrapPages.value = "4"
+	}
+	else
+	{
+		form.PaperWrapType.selectedIndex = 0
+		form.PaperWrapBW.selectedIndex = 0
+		form.PaperWrapColor.selectedIndex = 0
+		form.PaperWrapPages.value = ""
+	}
+  }
+  
+  function checkForm(form)
+  {
+    // validate paper wrap
+    if(form.PaperWrapType.selectedIndex > 0) 
+	{
+		var iTotalNumPages = parseInt(form.JobTotalPages.value);
+  		var iWrapNumPages = parseInt(form.PaperWrapPages.value);
+		
+  		if(iWrapNumPages > iTotalNumPages) 
+		{
+    		// is the wrap a valid number
+		  	alert("Error: The number of pages of the wrap cannot exceed the total pages in the job.");
+		  	form.WrapPages.focus();
+		  	return false;
+  		}
+    }
+    
+    // validation was successful
+    return true;
+  }
+  
+</script>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="549" border="1" bgcolor="#666666">
+  <tr> 
+    <td width="25" height="1000"> 
+    <td width="600" valign="top" bgcolor="#666666"> 
+      <blockquote> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" color="#FFFFFF"><b><font size="+3"> 
+          TBP Request a Quote Form</font></b></font> </div>
+          
+              <!-- STEP 1: Put the full URL to formmail.php on your website in the 'action' value. -->
+<form method="post" action="http://www.yourdomain.com/formmail.php" name="Request a Quote">
+              <!-- Add validations, conditions or 'forced' values -->
+    <input type="hidden" name="conditions1" value=":#
+    	#TEST#EmailAddr ~ /^[-a-z0-9.]+@[-a-z0-9]+\.([-a-z0-9.]+)*[-a-z0-9.]$/i #
+        Valid Email address required.#" />
+              <!-- Add webpage to navigate to upon successful submission -->
+	<input type="hidden" name="good_url" value="http://yourdomain.com/postrequest.html" />
+     
+    <!-- STEP 2: Put your email address in the 'recipients' value.
+                 Note that you also have to allow this email address in the
+                 $TARGET_EMAIL setting within formmail.php!
+    -->
+    <input type="hidden" name="recipients" value="estimator_email@yourdomain.com" />
+
+    <!-- STEP 3: Specify required fields in the 'required' value - or leave unchanged.
+            NOTE: DO NOT put your email address and name here.
+            "Your email address" and "Your name" are error messages for your users to see,
+            not placeholders for you to replace.
+    -->
+    <input type="hidden" name="required" value="FullName:Your Name,company:Company Name,EmailAddr:Email Address,QuoteName:Quote Name,Contact:Contact Name,Company:Company Name,SalesmanName:Salesman Name,IssueDate:Issue Date,PrintDate:Print Date,Frequency:Frequency,JobFormat:Job Format,JobCopies:Job Copies,JobTotalPages:Job Total Pages,ProductWidth:Product Width,ProductHeight:Product Height,PaperType:Paper Type,PaperBW:Paper Basis Weight" />
+
+    <!-- STEP 4: Put your subject line in the 'subject' value. -->
+    <input type="hidden" name="subject" value="Request a Quote" />
+
+    <!-- ALL DONE! Visit our site for HOW TO guides and more complex features. -->
+
+    <!-- this derives (creates) "email" and "realname" special fields from the input fields -->
+    <input type="hidden" name="derive_fields" value="email=EmailAddr,realname=FullName" />
+
+    <!-- this excludes the "email" and "realname" special fields from the body of the email you receive -->
+    <input type="hidden" name="mail_options" value="Exclude=email;realname;hiddenAuthenticationField;submit" />
+
+        
+          
+          <table width="450" border="1" cellpadding="5" cellspacing="0" bgcolor="#CCCCCC">
+            <tr> 
+              <td colspan="3"> 
+                <div align="center"><font face="Arial, Helvetica, sans-serif"><b>Customer 
+                  Information</b></font></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="120"> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b> 
+                  Quote Name:</b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="QuoteName" size="50">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Contact: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="Contact" size="50">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Company: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="Company" size="50">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Sales 
+                  Rep: </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="SalesmanName">
+                  <option>Sid Sample</option>
+                </select>
+                </font></td>
+            </tr>
+            <tr> 
+              <td colspan="3"> 
+                <div align="center"><font face="Arial, Helvetica, sans-serif"><b>Job 
+                  Information</b></font></div>
+              </td>
+            </tr>
+            <input type="hidden" name="JobAccepted" value="True">
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Issue 
+                  Date: </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="date" name="IssueDate" size="10" autocomplete="on">
+                (example: 09/01/2015)</font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Print 
+                  Date: </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="date" name="PrintDate" size="10">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Frequency: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="Frequency">
+                  <option selected>One-Time</option>
+                  <option>Daily</option>
+                  <option>Weekly</option>
+                  <option>Bi-Weekly</option>
+                  <option>Bi-Monthly</option>
+                  <option>Monthly</option>
+                  <option>Quarterly</option>
+                  <option>Semi-Annual</option>
+                  <option>Annual</option>
+                  <option>Other</option>
+                </select>
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Format: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="JobFormat">
+                  <option>Tab</option>
+                  <option>Sheet</option>
+                  <option>Standard</option>
+                  <option>Flexi</option>
+                  <option>Book</option>
+                </select>
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Copies: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="JobCopies" size="10">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Pages: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="JobTotalPages" size="10">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Product 
+                  Size: </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="ProductWidth" size="10">
+                width X </font> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="ProductHeight" size="10">
+                height</font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Paper:</b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="PaperType">
+                  <option>Newsprint</option>
+                  <option>HiBrite</option>
+                  <option>Offset</option>
+                </select>
+                <select name="PaperBW">
+                  <option>26.5</option>
+                  <option>27.6</option>
+                  <option>32</option>
+                  <option>36</option>
+                  <option>55</option>
+                </select>
+                lb. 
+                <select name="PaperColor">
+                  <option selected>White</option>
+                  <option>HiBrite</option>
+                </select>
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Paper 
+                  Wrap: </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="checkbox" name="chkPaperWrapIncluded" onClick = WrapClick(this.form)>
+                <select name="PaperWrapType">
+                  <option selected>none</option>
+                  <option>Newsprint</option>
+                  <option>HiBrite</option>
+                  <option>Offset</option>
+                </select>
+                <select name="PaperWrapBW">
+                  <option>-</option>
+                  <option>40</option>
+                  <option>55</option>
+                </select>
+                lb. 
+                <select name="PaperWrapColor">
+                  <option>-</option>
+                  <option>White</option>
+                </select>
+                Pages: 
+                <input type="text" name="PaperWrapPages" size="3" maxlength="2">
+                </font></td>
+            </tr>
+            <input type="hidden" name="WebWidth" value="34">
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Paper 
+                  Notes: </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="text" name="PaperNotes" size="50" value="">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Folding: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="FoldingType">
+                  <option selected>1/2</option>
+                  <option>1/4</option>
+                </select>
+                <br>
+                Notes: 
+                <input type="text" name="FoldingNotes" size="50">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Ink: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="checkbox" name="BlackInk" value="True" checked>
+                Black 
+                <input type="checkbox" name="SpotColor" value="True">
+                Spot Color 
+                <input type="checkbox" name="ProcessColor" value="True">
+                Process Color<br>
+                Notes: 
+                <input type="text" name="InkNotes" size="50">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Composition: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="Composition">
+                  <option selected>none</option>
+                  <option>FTP</option>
+                  <option>Email</option>
+                  <option>Disk</option>
+                </select>
+                <br>
+                Notes: 
+                <input type="text" name="CompositionNotes" size="35">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Proofing: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="ProofingType">
+                  <option selected>none</option>
+                  <option>Paper Proofs</option>
+                </select>
+                <br>
+                Notes: 
+                <input type="text" name="ProofingNotes" size="35">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Packaging: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> 
+                <p><font size="-1" face="Arial, Helvetica, sans-serif"> 
+                  <input type="checkbox" name="Skids" value="True">
+                  Skids 
+                  <input type="checkbox" name="Bundles" value="True">
+                  Bundles 
+                  <input type="checkbox" name="Cartons" value="True">
+                  Cartons<br>
+                  </font><font size="-1" face="Arial, Helvetica, sans-serif">Notes: 
+                  <input type="text" name="PackagingNotes" size="35">
+                  </font></p>
+              </td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Bindery: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <select name="BinderyType">
+                  <option selected>none</option>
+                  <option>glued and trimmed</option>
+                  <option>stitched and trimmed</option>
+                </select>
+                <input type="checkbox" name="BinderyCovers" value="True">
+                Covers 
+                <input type="checkbox" name="BinderyInserts" value="True">
+                Inserts 
+                <input type="checkbox" name="BinderyBleeds" value="True">
+                Bleeds<br>
+                Notes: 
+                <input type="text" name="BinderyNotes" size="35">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Mailing:</b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="checkbox" name="MailingRequired" value="True">
+                Mailing Required?<br>
+                Notes: 
+                <input type="text" name="MailingNotes" size="35">
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Delivery: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <input type="checkbox" name="DeliveryRequired" value="True">
+                Delivery 
+                <input type="checkbox" name="DeliveryPickup" value="True">
+                Pickup <br>
+                <textarea name="DeliveryNotes" cols="50"></textarea>
+                </font></td>
+            </tr>
+            <tr> 
+              <td> 
+                <div align="right"><font size="-1" face="Arial, Helvetica, sans-serif"><b>Notes: 
+                  </b></font></div>
+              </td>
+              <td colspan="2"> <font size="-1" face="Arial, Helvetica, sans-serif"> 
+                <textarea name="QuoteNotes" cols="50"></textarea>
+                </font></td>
+            </tr>
+            <tr> 
+              <td colspan="3"> 
+                <div align="center"> 
+                  <p><font face="Arial, Helvetica, sans-serif"> 
+                    <input type="submit" name="submit" value="  Submit Request for Quote  ">
+                    <input type="reset" name="reset" value="Reset">
+                    </font></p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </blockquote>
+    
+    <td width="22">
+  <tr> 
+    <td height="14">
+    <td>
+    <td>
+</table>
+  </select>
+</body>
+</html>
